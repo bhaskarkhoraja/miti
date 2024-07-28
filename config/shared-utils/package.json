@@ -1,0 +1,37 @@
+{
+  "name": "@config/utils",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/utils.js",
+  "module": "dist/utils.mjs",
+  "types": "dist/utils.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/utils.mjs",
+      "require": "./dist/utils.js",
+      "types": "./dist/utils.d.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsup src/* --format esm,cjs --dts",
+    "dev": " pnpm clean && tsup src/* --format cjs,esm --dts --watch",
+    "lint": "eslint src/",
+    "lint:fix": "eslint --fix",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@config/eslint-config": "workspace:*",
+    "@config/prettier-config": "workspace:*",
+    "@config/typescript-config": "workspace:*",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss": "^3.4.6",
+    "tsup": "^8.2.2"
+  }
+}

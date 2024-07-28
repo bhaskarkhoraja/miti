@@ -1,0 +1,18 @@
+{
+  "extends": "@config/typescript-config/react-library.json",
+  "include": [
+    "."
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules"
+  ]
+}

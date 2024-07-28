@@ -1,0 +1,51 @@
+{
+  "name": "@bhaskar/react-miti",
+  "version": "0.0.0",
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:css": "tailwindcss -i ./src/styles/miti.css -o ./dist/styles.css --minify",
+    "build:react": "pnpm clean && tsup src/index.tsx --format esm,cjs --dts --external react",
+    "build": "pnpm clean && pnpm build:react && pnpm build:css",
+    "dev:css": "tailwindcss -i ./src/styles/miti.css -o ./dist/styles.css --watch",
+    "dev:react": "pnpm clean && tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "dev": "conc pnpm:dev:*",
+    "lint": "eslint src/ && stylelint \"./src/styles/*.css\"",
+    "lint:fix": "eslint --fix",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "type-check": "tsc --noEmit",
+    "release": "changeset version"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.396.0",
+    "tailwind-merge": "^2.4.0",
+    "tsup": "^8.2.2"
+  },
+  "devDependencies": {
+    "@config/eslint-config": "workspace:*",
+    "@config/prettier-config": "workspace:*",
+    "@config/tailwind-config": "workspace:*",
+    "@config/typescript-config": "workspace:*",
+    "@types/react": "^18.3.3",
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
